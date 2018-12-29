@@ -7,9 +7,9 @@ function setWidth() {
   setWidth();
   
 
-  let age = 28;
+  let age = 208;
   if(age > 12) {
-    var dogYears = age * 7;
+    const dogYears = age * 7;
     console.log(`You are ${dogYears} dog years old!`);
     if(age > 29) {
         console.log('Congrats! You\'re older than Bluey');

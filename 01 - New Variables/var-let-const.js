@@ -1,3 +1,5 @@
+//added a .js file so i could run in terminal w/ node
+
 function setWidth() {
     var width = 100;
     console.log(width);

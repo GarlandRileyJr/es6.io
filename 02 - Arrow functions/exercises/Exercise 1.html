@@ -33,14 +33,44 @@
 
   // Select all the list items on the page and convert to array
 
+    const getList = () => {
+      let listOfElements = document.querySelectorAll('li');
+      let arrayOfElements = [];
+      for(let i = 0; i < listOfElements.length; i++) {
+        arrayOfElements.push(listOfElements[i]);
+      }
+      return arrayOfElements;
+    }
+    let list = getList();
   // Filter for only the elements that contain the word 'Flexbox'
-
+    let filter = list.filter((element) => {
+      if (element.innerHTML === 'Flexbox Video') {
+        return element;
+      }
+    })
   // map down to a list of time strings
-
+    let mapped = filter.map((element) => {
+      return element.attributes['0']['nodeValue'];
+    })
   // map to an array of seconds
+    let mappedToSeconds = mapped.map((element) => {
 
+      let seconds = element.substring(element.length - 2) * 1;
+
+      if (element[1] !== ":") {
+        var minutes = element.substring(0,2) * 1;
+      }
+      else {
+        minutes = element[0] * 1;
+      }
+      return (minutes * 60) + seconds;
+    })
   // reduce to get total
-
+    let reduceSeconds = mappedToSeconds.reduce((last, current) => {
+        return current = last + current;
+    })
+    //returns 6132
+    
   // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
 
 </script>

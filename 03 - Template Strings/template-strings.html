@@ -28,9 +28,9 @@ const beers = [
 
   let count = 0;
   const showBeer = (count) => { 
-    console.log('count: ', count);
+
     const returnedElement = beers[count];
-    console.log('returnedElement: ', returnedElement);
+
     return `
       <div>
         <img src="${returnedElement.label}">
@@ -43,7 +43,7 @@ const beers = [
   const markup = `
     <div>
       <ul class="beerList"></ul>
-      <button class="button">Beer Me!</button>
+      <button class="button">Beer Me</button>
     </div>
   `;
   document.body.innerHTML = markup;

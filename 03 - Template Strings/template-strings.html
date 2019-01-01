@@ -15,17 +15,43 @@
   { first: 'Nicolaus', last: 'Copernicus', year: 1473 },
   { first: 'Max', last: 'Planck', year: 1858 },
 ];
+const beers = [
+  { name: 'Purple Iris', abv: 6.8, label: 'https://s3.amazonaws.com/brewerydbapi/beer/dMLwGo/upload_yiUllE-large.png', type: 'IPA' },
+  { name: 'Orange Blossom Pilsner', abv: 5.5, label: 'https://s3.amazonaws.com/brewerydbapi/beer/Rczcb9/upload_9Nhxxl-large.png', type: 'Pilsner' },
+  { name: 'Darkness', abv: 4.2, label: 'https://s3.amazonaws.com/brewerydbapi/beer/lnxbIV/upload_idNXFf-large.png', type: 'Stout' },
+  { name: 'Belgian Wit', abv: 5.4, label: 'https://s3.amazonaws.com/brewerydbapi/beer/3CvVQG/upload_xOMnlK-large.png', type: 'Wheat' },
+  { name: 'Stolen Fruit', abv: 4.6, label: 'https://s3.amazonaws.com/brewerydbapi/beer/YGT30k/upload_uVCHP7-large.png', type: 'Wheat' },
+];
   const name = 'Snickers';
   const age = 2;
   const sentence = `My dog ${name} is ${age * 7} years old.`;
-  console.log(sentence);
 
+  let count = 0;
+  const showBeer = (count) => { 
+    console.log('count: ', count);
+    const returnedElement = beers[count];
+    console.log('returnedElement: ', returnedElement);
+    return `
+      <div>
+        <img src="${returnedElement.label}">
+        <p>
+          ${returnedElement.name}
+        </p>
+      </div>
+    `
+  };
   const markup = `
     <div>
-      ${inventors.map(inventor => `<li>${inventor.first} ${inventor.last} was born ${(2019 - inventor.year) * 7} dog years ago.</li>`).join('')}
+      <ul class="beerList"></ul>
+      <button class="button">Beer Me!</button>
     </div>
   `;
   document.body.innerHTML = markup;
+  let button = document.getElementsByClassName('button')[0];
+  button.addEventListener('click', () => {
+      document.getElementsByClassName('beerList')[0].innerHTML = showBeer(count);
+      return count < beers.length - 1  ? count++ : count = 0;
+  });
 </script>
 </body>
 </html>
